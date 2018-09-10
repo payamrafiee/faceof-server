@@ -1,0 +1,26 @@
+{
+  "name": "faceof-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist",
+    "dev:build": "yarn run clean && webpack -w",
+    "dev": "cross-env NODE_ENV=development nodemon dist/index.bundle.js"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "babel-core": "^7.0.0-alpha.19",
+    "babel-loader": "7",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.4",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.17.2",
+    "webpack-command": "^0.4.1",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
