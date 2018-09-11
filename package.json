@@ -9,14 +9,21 @@
     "dev": "cross-env NODE_ENV=development nodemon dist/index.bundle.js"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
     "cross-env": "^5.2.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "mongoose": "^5.2.14"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-alpha.19",
     "babel-loader": "7",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "eslint": "^5.5.0",
+    "eslint-config-equimper": "^2.2.2",
+    "morgan": "^1.9.1",
     "nodemon": "^1.18.4",
     "rimraf": "^2.6.2",
     "webpack": "^4.17.2",
