@@ -2,33 +2,33 @@ import mongoose, { Schema } from 'mongoose';
 import { hashSync, compareSync } from 'bcrypt-nodejs';
 
 const UserSchema = new Schema({
-  phone_number: {
+  email: {
     type: String,
     trim: true,
     unique: true,
     required: [true, 'Phone number is required!'],
   },
-  verify_code: {
+  password: {
     type: String,
-  },
-  phone_status: {
-    type: String,
+    trim: true,
+    required: true,
+    minlength: 6,
   },
 });
 
 UserSchema.pre('save', function (next) {
-  if (this.isModified('verify_code')) {
-    this.verify_code = this._hashCode(this.verify_code);
+  if (this.isModified('password')) {
+    this.password = this._hashPassword(this.password);
   }
   return next();
 });
 
 UserSchema.methods = {
-  _hashCode(code) {
-    return hashSync(code);
+  _hashPassword(password) {
+    return hashSync(password);
   },
-  authenticateUser(code) {
-    return compareSync(code, this.verify_code);
+  authenticateUser(password) {
+    return compareSync(password, this.password);
   },
 };
 
