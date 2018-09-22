@@ -9,21 +9,9 @@ export async function signup(req, res) {
   }
 }
 
-export async function login(req, res) {
-  try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
+export async function login(req, res, next) {
+  res.status(200).json(req.user);
 
-    if (!user) {
-      return console.log('user not found');
-    }
-    if (user.authenticateUser(password)) {
-      res.status(200).send('You are successfully loged in');
-    } else {
-      res.status(400).send('wrong password');
-    }
-  } catch (error) {
-    console.log(error);
-  }
+  return next();
 }
 
